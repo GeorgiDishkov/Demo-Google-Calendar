@@ -4,39 +4,47 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import React, { useEffect, useRef, useState } from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
+import { RootState, useAppDispach } from "../../../redux/store";
 import dayjs from "dayjs";
-
-const PREFIX = "calendar";
-
-const classes = {
-  calendarWrapper: `${PREFIX}-calendarWrapper`,
-};
-const StyledBox = styled(Box)(({ theme }) => ({
-  [`& .${classes.calendarWrapper}`]: {},
-}));
+import { setFocusedDate } from "../../../redux/calendarSlice/reducer";
+import { useNavigate } from "react-router-dom";
+import urlConverter from "../../../utils/urlConverter";
 
 const TopBarCalendar = () => {
   const theme = useTheme();
   const filteredDate = useSelector(
     (state: RootState) => state?.calendar?.focusedDate
   );
+  const today = useSelector((state: RootState) => state?.calendar?.today);
   const [selectedDate, setSelectedDate] = useState<dayjs.Dayjs | null>(null);
+  const dispatch = useAppDispach();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (filteredDate) {
-      setSelectedDate(filteredDate);
+    if (filteredDate !== selectedDate && selectedDate) {
+      (async () => {
+        await dispatch(setFocusedDate(selectedDate.toISOString()));
+        const url = urlConverter(selectedDate);
+
+        navigate(url, { replace: true, state: { preventRender: false } });
+      })();
     }
-  }, [filteredDate]);
+  }, []);
+
+  useEffect(() => {
+    if (filteredDate || today) {
+      setSelectedDate(dayjs(filteredDate ? filteredDate : today));
+    }
+  }, [filteredDate, today]);
 
   return (
-    <StyledBox>
+    <Box>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Box>
           <DatePicker
+            views={["month", "year"]}
             value={selectedDate}
             onChange={(date) => setSelectedDate(date)}
-            className={classes.calendarWrapper}
             showDaysOutsideCurrentMonth
             slots={{
               openPickerIcon: ArrowDropDownIcon,
@@ -49,7 +57,7 @@ const TopBarCalendar = () => {
           />
         </Box>
       </LocalizationProvider>
-    </StyledBox>
+    </Box>
   );
 };
 

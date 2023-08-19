@@ -1,6 +1,10 @@
 import { Button, Link, Typography, styled, useTheme } from "@mui/material";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
+import { RootState, useAppDispach } from "../../../redux/store";
+import dayjs from "dayjs";
+import { useNavigate } from "react-router-dom";
+import { setFocusedDate } from "../../../redux/calendarSlice/reducer";
+import urlConverter from "../../../utils/urlConverter";
 
 const PREFIX = "today-button";
 
@@ -20,29 +24,31 @@ const StyledButton = styled(Button)(({ theme }) => ({
 const TodayDayButton = () => {
   const theme = useTheme();
   const today = useSelector((state: RootState) => state.calendar.today);
+  const dispatch = useAppDispach();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (today) {
+      dispatch(setFocusedDate(today));
+      const url = urlConverter(dayjs(today));
+      navigate(url, { replace: true, state: { preventRender: false } });
+    }
+  };
 
   return (
     <StyledButton
       disabled={today === undefined}
       style={{ opacity: today === undefined ? 0.3 : 1 }}
+      onClick={handleClick}
     >
-      <Link
-        textTransform="none"
-        underline="none"
-        href={`${
-          today
-            ? `/${today?.date()}` //TODO : make it work ffs
-            : `/`
-        }`}
+      <Typography
+        fontSize={15}
+        style={{ textTransform: "none" }}
+        fontWeight={theme.typography.fontWeightMedium}
+        color={theme.palette.primary.contrastText}
       >
-        <Typography
-          fontSize={15}
-          fontWeight={theme.typography.fontWeightMedium}
-          color={theme.palette.primary.contrastText}
-        >
-          днес
-        </Typography>
-      </Link>
+        Today
+      </Typography>
     </StyledButton>
   );
 };

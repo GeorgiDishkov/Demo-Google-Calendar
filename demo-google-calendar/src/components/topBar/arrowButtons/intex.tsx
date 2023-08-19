@@ -1,15 +1,12 @@
-import {
-  Button,
-  IconButton,
-  Link,
-  Typography,
-  styled,
-  useTheme,
-} from "@mui/material";
+import { IconButton, styled, useTheme } from "@mui/material";
 import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
+import { RootState, useAppDispach } from "../../../redux/store";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { setFocusedDate } from "../../../redux/calendarSlice/reducer";
+import { useNavigate } from "react-router-dom";
+import urlConverter from "../../../utils/urlConverter";
+import dayjs from "dayjs";
 
 const PREFIX = "arrow-button";
 
@@ -25,42 +22,49 @@ const StyledButton = styled(IconButton)(({ theme }) => ({
 
 export const LeftArrowButton = () => {
   const theme = useTheme();
-  const today = useSelector((state: RootState) => state.calendar.today);
+  const focusedDate = useSelector(
+    (state: RootState) => state.calendar.focusedDate
+  );
+  const dispatch = useAppDispach();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (focusedDate) {
+      const prevouseMonth = dayjs(focusedDate)?.subtract(1, "months");
+
+      dispatch(setFocusedDate(prevouseMonth.toISOString()));
+      const url = urlConverter(prevouseMonth);
+      navigate(url, { replace: true, state: { preventRender: false } });
+    }
+  };
 
   return (
-    <StyledButton
-      disabled={!today}
-      style={{ opacity: today === undefined ? 0.3 : 1 }}
-    >
-      <Link
-        textTransform="none"
-        underline="none"
-        href={`${today ? `/${today}` : `/`}`}
-        display="flex"
-      >
-        <ArrowBackIosIcon className={classes.button} />
-      </Link>
+    <StyledButton onClick={handleClick}>
+      <ArrowBackIosIcon className={classes.button} />
     </StyledButton>
   );
 };
 
 export const RightArrowButton = () => {
   const theme = useTheme();
-  const today = useSelector((state: RootState) => state.calendar.today);
+  const focusedDate = useSelector(
+    (state: RootState) => state.calendar.focusedDate
+  );
+  const dispatch = useAppDispach();
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    if (focusedDate) {
+      const prevouseMonth = dayjs(focusedDate)?.add(1, "months");
+      dispatch(setFocusedDate(prevouseMonth.toISOString()));
+      const url = urlConverter(prevouseMonth);
+      navigate(url, { replace: true, state: { preventRender: false } });
+    }
+  };
 
   return (
-    <StyledButton
-      disabled={!today}
-      style={{ opacity: today === undefined ? 0.3 : 1 }}
-    >
-      <Link
-        textTransform="none"
-        underline="none"
-        href={`${today ? `/${today}` : `/`}`} //TODO: make it work right
-        display="flex"
-      >
-        <ArrowForwardIosIcon className={classes.button} />
-      </Link>
+    <StyledButton onClick={handleClick}>
+      <ArrowForwardIosIcon className={classes.button} />
     </StyledButton>
   );
 };

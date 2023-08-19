@@ -1,6 +1,13 @@
-import dayjs from "dayjs";
-
 export interface calendarProps {
-  focusedDate: dayjs.Dayjs | null;
-  today: dayjs.Dayjs | null;
+  focusedDate: string | null;
+  today: string | null;
+  currentMonth: singleDayObj[] | null;
+  nextMonth: singleDayObj[] | null;
+  previousMonth: singleDayObj[] | null;
+}
+
+export interface singleDayObj {
+  year: number;
+  month: number;
+  day: number;
 }

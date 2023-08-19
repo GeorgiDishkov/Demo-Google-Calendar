@@ -14,6 +14,7 @@ import { LeftArrowButton, RightArrowButton } from "./arrowButtons/intex";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import TopBarCalendar from "./calendar";
+import dayjs from "dayjs";
 
 const PREFIX = "top-bar";
 
@@ -46,7 +47,8 @@ interface topBarProps {
 const TopBar = ({ title }: topBarProps) => {
   const theme = useTheme();
 
-  const today = useSelector((state: RootState) => state.calendar.today)?.date();
+  const today = useSelector((state: RootState) => state.calendar.today);
+  const date = dayjs(today).date();
 
   return (
     <StyledAppBar position="static" color="primary">
@@ -54,7 +56,7 @@ const TopBar = ({ title }: topBarProps) => {
         <Box className={classes.wrapper}>
           <Box className={classes.dayWrapper}>
             <Typography fontSize={14} color={theme.palette.secondary.light}>
-              {today}
+              {date}
             </Typography>
           </Box>
           <Typography
