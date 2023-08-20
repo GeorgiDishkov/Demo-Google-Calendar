@@ -40,7 +40,6 @@ const eventSlice = createSlice({
   reducers: {
     addEvent: (state, action: PayloadAction<eventProps>) => {
       const id = uuidv4();
-      console.log("action.payload => ", action.payload);
       const data = {
         date: dayjs(action.payload.date).format("DD/MM/YYYY"),
         title: action.payload.title,

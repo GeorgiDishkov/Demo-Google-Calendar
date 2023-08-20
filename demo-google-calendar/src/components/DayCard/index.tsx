@@ -105,26 +105,37 @@ const DayCard = ({ day, weekDayTitle }: dayCardProps) => {
       </Typography>
       <Box style={{ width: "100%" }}>
         {dailyEvents &&
-          dailyEvents.map((event, index) => (
-            <>
-              <EventModal open={open} onClose={onClose} event={focusedEvent} />
-              <Box
-                key={index}
-                onClick={() => handleClick(event)}
-                className={`${
-                  event.typeEvent === "event"
-                    ? classes.eventWrapper
-                    : event.typeEvent === "conferece"
-                    ? classes.taskWrapper
-                    : classes.taskWrapper
-                }`}
-              >
-                <Typography className={classes.eventText} fontSize={13}>
-                  {event.title}
-                </Typography>
-              </Box>
-            </>
-          ))}
+          dailyEvents.map((event, index) => {
+            if (index > 6) {
+              return null;
+            }
+
+            return (
+              <>
+                <EventModal
+                  open={open}
+                  onClose={onClose}
+                  event={focusedEvent}
+                  date={date}
+                />
+                <Box
+                  key={index}
+                  onClick={() => handleClick(event)}
+                  className={`${
+                    event.typeEvent === "event"
+                      ? classes.eventWrapper
+                      : event.typeEvent === "conferece"
+                      ? classes.taskWrapper
+                      : classes.taskWrapper
+                  }`}
+                >
+                  <Typography className={classes.eventText} fontSize={13}>
+                    {event.title}
+                  </Typography>
+                </Box>
+              </>
+            );
+          })}
       </Box>
     </StyledBox>
   );

@@ -1,37 +1,93 @@
 {
-    "1": {
-      "date": "17/08/2023",
-      "title": "Event 1",
-      "description": "This is the description for Event 1",
+    "488739f9-7b30-424d-a3ca-ee119577d471": {
+      "date": "01/01/1990",
+      "title": "New Year",
+      "description": "Official holiday",
       "typeEvent": "event",
-      "repeatedly": false
+      "repeatedly": true
     },
-    "2": {
-      "date": "17/09/2023",
-      "title": "Event 2",
-      "description": "This is the description for Event 2",
+    "5978dfa3-c77f-4165-9e53-b9911d2cfdcf": {
+      "date": "01/03/1990",
+      "title": "Baba Marta",
+      "description": "Official holiday",
       "typeEvent": "event",
-      "repeatedly": false
+      "repeatedly": true
     },
-    "5": {
-      "date": "17/09/2023",
-      "title": "Event 23",
-      "description": "This is the description for Event 2",
+    "93b416fe-66d1-428b-8415-8822edfbbdd9": {
+      "date": "03/03/1990",
+      "title": "Day of the Liberation of Bulgaria",
+      "description": "Official holiday",
       "typeEvent": "event",
-      "repeatedly": false
+      "repeatedly": true
     },
-    "4": {
-      "date": "17/09/2023",
-      "title": "Event 25",
-      "description": "This is the description for Event 2",
+    "416be1f0-28b7-4d25-994f-2a261b617731": {
+      "date": "08/03/1990",
+      "title": "Mother's Day",
+      "description": "Official holiday",
       "typeEvent": "event",
-      "repeatedly": false
+      "repeatedly": true
     },
-    "3": {
-      "date": "17/10/2023",
-      "title": "Event 3",
-      "description": "This is the description for Event 3",
+    "49b125bf-1d28-4a21-880a-984e45cfc11b": {
+      "date": "01/05/1990",
+      "title": "Labor Day",
+      "description": "Official holiday",
       "typeEvent": "event",
-      "repeatedly": false
+      "repeatedly": true
+    },
+    "05fb2c0a-77d7-4d87-8ce8-eacf3d1145b9": {
+      "date": "01/05/1990",
+      "title": "Labor Day",
+      "description": "Official holiday",
+      "typeEvent": "event",
+      "repeatedly": true
+    },
+    "d66a47e8-32c4-4278-9429-373e74fca66b": {
+      "date": "24/05/1990",
+      "title": "Bulgarian Enlightenment Day",
+      "description": "Official holiday",
+      "typeEvent": "event",
+      "repeatedly": true
+    },
+    "f3d69e34-b6d3-478e-918c-d352528e213b": {
+      "date": "01/06/1990",
+      "title": "July",
+      "description": "Official holiday",
+      "typeEvent": "event",
+      "repeatedly": true
+    },
+    "33d2536a-0f21-454d-9d11-74aa18805356": {
+      "date": "06/09/1990",
+      "title": "Unification Day",
+      "description": "Official holiday",
+      "typeEvent": "event",
+      "repeatedly": true
+    },
+    "e9d38b3e-2225-4517-b156-738d34168355": {
+      "date": "22/09/1990",
+      "title": "Independence Day of Bulgaria",
+      "description": "Official holiday",
+      "typeEvent": "event",
+      "repeatedly": true
+    },
+    "9b610dfb-3f5b-49fd-8d77-77a7c38e4a98": {
+      "date": "24/12/1990",
+      "title": "Christmas Eve",
+      "description": "Official holiday",
+      "typeEvent": "event",
+      "repeatedly": true
+    },
+    "b3ac9900-a1a6-4d27-a91b-5d43b6e1ed8b": {
+      "date": "25/12/1990",
+      "title": "Christmas",
+      "description": "Official holiday",
+      "typeEvent": "event",
+      "repeatedly": true
+    },
+    "ef89f8f8-659a-422e-8d8a-16a3e6f0b97f": {
+      "date": "26/12/1990",
+      "title": "Father's Day",
+      "description": "Official holiday",
+      "typeEvent": "event",
+      "repeatedly": true
     }
   }

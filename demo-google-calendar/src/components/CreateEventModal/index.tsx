@@ -21,6 +21,9 @@ const classes = {
   checkBox: `${PREFIX}-checkBox`,
 };
 const StyledModal = styled(Modal)(({ theme }) => ({
+  [`& .MuiBackdrop-root`]: {
+    backgroundColor: "rgba(0, 0, 0, 0)",
+  },
   [`& .${classes.button}`]: {
     color: theme.palette.background.default,
     marginRight: "10px",
@@ -80,9 +83,9 @@ const CreateEvemtModal = ({ isOpen, onClose }: any) => {
           transform: "translate(-50%, -50%)",
           width: 400,
           backgroundColor: "#fff",
-          boxShadow: 24,
           padding: 2,
           borderRadius: 3,
+          boxShadow: "8px 14px 20px #0000006b",
         }}
       >
         <Box style={{ marginLeft: "40px" }}>

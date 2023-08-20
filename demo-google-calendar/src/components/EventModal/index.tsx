@@ -8,9 +8,10 @@ interface eventModalProps {
   open: boolean;
   onClose: any;
   event?: any;
+  date?: string;
 }
 
-const EventModal = ({ open, onClose, event }: eventModalProps) => {
+const EventModal = ({ open, onClose, event, date }: eventModalProps) => {
   const PREFIX = "event-modal";
 
   const classes = {
@@ -23,7 +24,7 @@ const EventModal = ({ open, onClose, event }: eventModalProps) => {
       marginLeft: "89%",
     },
     [`& .${classes.pointer}`]: {
-      backgroundColor: "#177545",
+      backgroundColor: event.typeEvent === "event" ? "#177545" : "#007bd3ba",
       width: "15px",
       height: "15px",
       borderRadius: "4px",
@@ -34,6 +35,9 @@ const EventModal = ({ open, onClose, event }: eventModalProps) => {
       display: "flex",
       alignItems: "center",
       flexWrap: "nowrap",
+    },
+    [`& .MuiBackdrop-root`]: {
+      backgroundColor: "rgba(0, 0, 0, 0)",
     },
   }));
 
@@ -53,6 +57,7 @@ const EventModal = ({ open, onClose, event }: eventModalProps) => {
           transform: "translate(-50%, -50%)",
           position: "absolute",
           borderRadius: "8px",
+          boxShadow: "8px 14px 20px #0000006b",
         }}
       >
         <IconButton className={classes.cross} onClick={onClose}>
@@ -62,7 +67,7 @@ const EventModal = ({ open, onClose, event }: eventModalProps) => {
           <Box className={classes.pointer}></Box>
           <Typography variant="h6">
             {event.title}
-            <Typography fontSize={16}>Date: {event.date}</Typography>
+            <Typography fontSize={16}>Date: {date}</Typography>
           </Typography>
         </Box>
         <Box className={classes.rowWrapper}>
