@@ -161,6 +161,7 @@ const CreateEvemtModal = ({ isOpen, onClose }: any) => {
             <Typography style={{ marginLeft: "200px" }}>Repeatedly</Typography>
             <Checkbox
               className={classes.checkBox}
+              color="secondary"
               checked={repeatedly}
               onChange={(e) => setRepeatedly(e.target.checked)}
               name="myCheckbox"

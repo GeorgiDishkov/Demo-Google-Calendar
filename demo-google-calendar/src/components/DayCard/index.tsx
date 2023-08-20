@@ -21,9 +21,9 @@ const StyledBox = styled(Box)(({ theme }) => ({
   border: "0.3px solid #e0e0e0",
   flexDirection: "column",
   alignItems: "center",
-
+  padding: "10px",
   [`& .${classes.dayNumber}`]: {
-    paddingTop: "5px",
+    paddingBottom: "10px",
   },
   [`& .${classes.eventWrapper}`]: {
     width: "100%",
@@ -92,21 +92,17 @@ const DayCard = ({ day, weekDayTitle }: dayCardProps) => {
   return (
     <StyledBox>
       {weekDayTitle && (
-        <Typography
-          className={classes.dayNumber}
-          textTransform="uppercase"
-          fontSize={11}
-        >
+        <Typography textTransform="uppercase" fontSize={15}>
           {weekDayTitle}
         </Typography>
       )}
-      <Typography className={classes.dayNumber} fontSize={11} fontWeight="900">
+      <Typography className={classes.dayNumber} fontSize={15} fontWeight="900">
         {day?.day}
       </Typography>
       <Box style={{ width: "100%" }}>
         {dailyEvents &&
           dailyEvents.map((event, index) => {
-            if (index > 6) {
+            if (index > 5) {
               return null;
             }
 
