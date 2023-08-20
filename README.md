@@ -1,8 +1,8 @@
 # Basic google calendar
 
-# Page Safe
+## Guard page
 
-Page Safe will return you if the date is invalid.
+Guard page will return you if the date is invalid.
 
 ## Calendar
 
