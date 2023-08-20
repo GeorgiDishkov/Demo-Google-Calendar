@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography, styled } from "@mui/material";
+import { Box, Container, styled } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState, useAppDispach } from "../../redux/store";
@@ -18,6 +18,7 @@ import { singleDayObj } from "../../redux/calendarSlice/type";
 import fillTheMonth from "../../utils/fillTheMonth";
 import weekDays from "../../constant/weekDays";
 import AddIcon from "@mui/icons-material/Add";
+import CreateEvemtModal from "../../components/CreateEventModal";
 
 const MonthLayout = () => {
   const { year, month, day } = useParams();
@@ -45,7 +46,7 @@ const MonthLayout = () => {
     addEvent: `${PREFIX}-addEvent`,
   };
 
-  const StyledPlusWrapper = styled(Box)(() => ({
+  const StyledPlusWrapper = styled(Box)(({ theme }) => ({
     display: "flex",
     marginLeft: "12px",
     marginTop: "12px",
@@ -58,8 +59,10 @@ const MonthLayout = () => {
     alignItems: "center",
     zIndex: "20",
     position: "absolute",
+    boxShadow: "0px 0px 5px #00000059",
     "&:hover": {
-      boxShadow: "0px 3px 5px black",
+      backgroundColor: theme.palette.background.paper,
+      boxShadow: "-1px 7px 16px #00000059",
     },
   }));
   const StyledBox = styled(Container)(() => ({
@@ -156,8 +159,9 @@ const MonthLayout = () => {
 
   return (
     <>
+      <CreateEvemtModal isOpen={open} onClose={onClose} />
       <StyledPlusWrapper onClick={handleCreate} className={classes.addEvent}>
-        <AddIcon fontSize="large" />
+        <AddIcon color="secondary" fontSize="large" />
       </StyledPlusWrapper>
       <StyledBox style={{ padding: 0, maxWidth: "100%" }}>
         <Box className={classes.rowWripper}>

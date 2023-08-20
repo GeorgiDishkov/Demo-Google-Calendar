@@ -11,7 +11,7 @@ interface eventModalProps {
 }
 
 const EventModal = ({ open, onClose, event }: eventModalProps) => {
-  const PREFIX = "today-button";
+  const PREFIX = "event-modal";
 
   const classes = {
     cross: `${PREFIX}-cross`,
@@ -30,6 +30,7 @@ const EventModal = ({ open, onClose, event }: eventModalProps) => {
       marginRight: "17px",
     },
     [`& .${classes.rowWrapper}`]: {
+      marginBottom: "10px",
       display: "flex",
       alignItems: "center",
       flexWrap: "nowrap",

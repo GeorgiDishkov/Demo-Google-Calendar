@@ -6,11 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { setFocusedDate } from "../../../redux/calendarSlice/reducer";
 import urlConverter from "../../../utils/urlConverter";
 
-const PREFIX = "today-button";
-
-const classes = {
-  todayButtonWrapper: `${PREFIX}-todayButtonWrapper`,
-};
 const StyledButton = styled(Button)(({ theme }) => ({
   marginLeft: theme.spacing(4),
   paddingLeft: theme.spacing(1),

@@ -1,10 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { singleDayObj } from "../../redux/calendarSlice/type";
 import { Box, Typography, styled } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import dayjs from "dayjs";
-import { useTheme } from "@emotion/react";
 import EventModal from "../EventModal";
 
 const PREFIX = "day-card";
@@ -14,6 +13,7 @@ const classes = {
   title: `${PREFIX}-title`,
   eventWrapper: `${PREFIX}-eventWrapper`,
   eventText: `${PREFIX}-eventText`,
+  taskWrapper: `${PREFIX}-taskWrapper`,
 };
 const StyledBox = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -37,6 +37,18 @@ const StyledBox = styled(Box)(({ theme }) => ({
       backgroundColor: "#1a673f",
     },
   },
+  [`& .${classes.taskWrapper}`]: {
+    width: "100%",
+    borderRadius: "4px",
+    backgroundColor: "#007bd3ba",
+    marginBottom: "2px",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    "&:hover": {
+      backgroundColor: "#2e72d9",
+    },
+  },
   [`& .${classes.eventText}`]: {
     paddingLeft: theme.spacing(1),
     color: theme.palette.background.paper,
@@ -54,6 +66,13 @@ const DayCard = ({ day, weekDayTitle }: dayCardProps) => {
     "DD/MM/YYYY"
   );
   const dailyEvents = Object.values(events).filter((event) => {
+    if (event.repeatedly) {
+      const eventWithoutYear = event.date.slice(0, -5);
+      const dateWithoutYear = date.slice(0, -5);
+      if (eventWithoutYear === dateWithoutYear) {
+        return event;
+      }
+    }
     if (event.date == date) {
       return event;
     }
@@ -92,7 +111,13 @@ const DayCard = ({ day, weekDayTitle }: dayCardProps) => {
               <Box
                 key={index}
                 onClick={() => handleClick(event)}
-                className={classes.eventWrapper}
+                className={`${
+                  event.typeEvent === "event"
+                    ? classes.eventWrapper
+                    : event.typeEvent === "conferece"
+                    ? classes.taskWrapper
+                    : classes.taskWrapper
+                }`}
               >
                 <Typography className={classes.eventText} fontSize={13}>
                   {event.title}

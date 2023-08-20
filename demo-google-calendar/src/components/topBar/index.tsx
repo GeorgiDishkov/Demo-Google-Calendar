@@ -1,14 +1,12 @@
 import {
   AppBar,
   Box,
-  Button,
-  Link,
   Toolbar,
   Typography,
   styled,
   useTheme,
 } from "@mui/material";
-import React, { ReactNode } from "react";
+import React from "react";
 import TodayDayButton from "./todayButton";
 import { LeftArrowButton, RightArrowButton } from "./arrowButtons/intex";
 import { useSelector } from "react-redux";

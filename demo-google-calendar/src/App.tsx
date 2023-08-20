@@ -15,12 +15,6 @@ import usePreviousMonthDaysTaker from "./hooks/usePreviousMonthDaysTaker/inxex";
 
 function App() {
   const today = dayjs(useSelector((state: RootState) => state.calendar.today));
-  const focusedDate = dayjs(
-    useSelector((state: RootState) => state.calendar.focusedDate)
-  );
-  const currentMonth = useSelector(
-    (state: RootState) => state.calendar.currentMonth
-  );
   const dispatch = useAppDispach();
 
   useEffect(() => {

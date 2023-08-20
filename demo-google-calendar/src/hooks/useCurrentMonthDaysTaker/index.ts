@@ -1,6 +1,4 @@
-import dayjs, { months } from "dayjs";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
+import dayjs from "dayjs";
 import toObject from "dayjs/plugin/toObject";
 import { singleDayObj } from "../../redux/calendarSlice/type";
 

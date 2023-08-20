@@ -3,30 +3,35 @@
       "date": "17/08/2023",
       "title": "Event 1",
       "description": "This is the description for Event 1",
-      "typeEvent": "Conference"
+      "typeEvent": "event",
+      "repeatedly": false
     },
     "2": {
       "date": "17/09/2023",
       "title": "Event 2",
       "description": "This is the description for Event 2",
-      "typeEvent": "Workshop"
+      "typeEvent": "event",
+      "repeatedly": false
     },
     "5": {
       "date": "17/09/2023",
       "title": "Event 23",
       "description": "This is the description for Event 2",
-      "typeEvent": "Workshop"
+      "typeEvent": "event",
+      "repeatedly": false
     },
     "4": {
       "date": "17/09/2023",
       "title": "Event 25",
       "description": "This is the description for Event 2",
-      "typeEvent": "Workshop"
+      "typeEvent": "event",
+      "repeatedly": false
     },
     "3": {
       "date": "17/10/2023",
       "title": "Event 3",
       "description": "This is the description for Event 3",
-      "typeEvent": "Seminar"
+      "typeEvent": "event",
+      "repeatedly": false
     }
   }
