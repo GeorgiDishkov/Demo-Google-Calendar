@@ -1,4 +1,4 @@
-import { Button, useTheme, styled, Box } from "@mui/material";
+import { useTheme, Box } from "@mui/material";
 import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import React, { useEffect, useRef, useState } from "react";
@@ -21,15 +21,13 @@ const TopBarCalendar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (filteredDate !== selectedDate && selectedDate) {
-      (async () => {
-        await dispatch(setFocusedDate(selectedDate.toISOString()));
-        const url = urlConverter(selectedDate);
+    if (!dayjs(filteredDate).isSame(selectedDate) && selectedDate) {
+      dispatch(setFocusedDate(selectedDate.toISOString()));
+      const url = urlConverter(selectedDate);
 
-        navigate(url, { replace: true, state: { preventRender: false } });
-      })();
+      navigate(url, { replace: true, state: { preventRender: false } });
     }
-  }, []);
+  }, [selectedDate]);
 
   useEffect(() => {
     if (filteredDate || today) {

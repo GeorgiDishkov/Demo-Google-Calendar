@@ -40,25 +40,6 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    if (
-      focusedDate &&
-      currentMonth &&
-      focusedDate?.month() !== currentMonth?.[0]?.month
-    ) {
-      // const nextMonthDays = useNextMonthDaysTaker(focusedDate);
-      // const currentMonthDays = useCurrentMonthDaysTaker(focusedDate);
-      // const previousMonthDays = usePreviousMonthDaysTaker(focusedDate);
-      // dispatch(
-      //   setMonthDays({
-      //     currentMonthDays,
-      //     nextMonthDays,
-      //     previousMonthDays,
-      //   })
-      // );
-    }
-  }, [focusedDate]);
-
   const RedirectToToday = () => {
     if (today) {
       const formatedDate = dateConverter(today);

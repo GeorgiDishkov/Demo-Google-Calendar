@@ -26,8 +26,8 @@ const classes = {
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   [`& .${classes.dayWrapper}`]: {
     marginRight: theme.spacing(2),
-    paddingLeft: "7px",
-    paddingRight: "7px",
+    paddingLeft: "2px",
+    paddingRight: "2px",
     border: " 8px solid",
     borderColor: "#2196F3 #FFC107 green #3F51B5",
   },
